@@ -12974,7 +12974,7 @@
        */
       mergeOptions(options) {
           return {
-              endpoint: 'https://api.sessions.local/sessions',
+              endpoint: 'https://api.sessions.chxse.dev/api/v1/sessions',
               attributes: {},
               userId: '',
               projectId: '', // Optional, backend will determine from API key
@@ -13120,6 +13120,14 @@
   function isActive() {
       return globalInstance ? globalInstance.isActive() : false;
   }
+  /**
+   * Start recording manually (if not already started)
+   */
+  function startRecording() {
+      if (globalInstance) {
+          globalInstance.startRecording();
+      }
+  }
   // Auto-initialize if script is loaded directly
   if (typeof window !== 'undefined') {
       // Expose global functions for CDN usage
@@ -13131,6 +13139,7 @@
           setUserId,
           getSessionId,
           isActive,
+          startRecording,
           SessionSDK,
       };
   }
@@ -13143,6 +13152,7 @@
   exports.isActive = isActive;
   exports.setAttributes = setAttributes;
   exports.setUserId = setUserId;
+  exports.startRecording = startRecording;
 
 }));
 //# sourceMappingURL=index.umd.js.map
